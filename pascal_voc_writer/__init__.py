@@ -10,7 +10,6 @@ class Writer:
         abspath = os.path.abspath(path)
 
         self.template_parameters = {
-            'path': abspath,
             'filename': os.path.basename(abspath),
             'folder': os.path.basename(os.path.dirname(abspath)),
             'width': width,
@@ -21,7 +20,7 @@ class Writer:
             'objects': []
         }
 
-    def addObject(self, name, xmin, ymin, xmax, ymax, pose='Unspecified', truncated=0, difficult=0):
+    def addObject(self, name, xmin, ymin, xmax, ymax, pose='Unspecified', truncated=0, occluded=0, difficult=0):
         self.template_parameters['objects'].append({
             'name': name,
             'xmin': xmin,
@@ -30,6 +29,7 @@ class Writer:
             'ymax': ymax,
             'pose': pose,
             'truncated': truncated,
+            'occluded': occluded,
             'difficult': difficult,
         })
 
